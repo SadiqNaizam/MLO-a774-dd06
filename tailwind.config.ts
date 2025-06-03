@@ -61,12 +61,26 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Explicit PRD colors not directly covered by Shadcn names
+        'primary-text': 'hsl(var(--color-primary-text))', // For PRD primaryText: #212529
+        'secondary-text': 'hsl(var(--color-secondary-text))', // For PRD secondaryText: #878A99
+        'accent-blue': 'hsl(var(--color-accent-blue))', // For PRD accentBlue: #299CDB
+        'accent-red': 'hsl(var(--color-accent-red))',   // For PRD accentRed: #F06548
+        'accent-green': 'hsl(var(--color-accent-green))', // For PRD accentGreen: #0AB39C
+        'surface': 'hsl(var(--color-surface))' // For PRD surface: #FFFFFF
 			},
 			borderRadius: {
+        // default is 'rounded-md' (0.375rem) via --radius
+        // buttons is 'rounded' (0.25rem)
+        // avatar is 'rounded-full' (9999px)
+        // Existing values correctly map to these Tailwind sizes if --radius is 0.375rem:
+        // lg (0.375rem) -> rounded-md
+        // md (0.25rem) -> rounded
+        // sm (0.125rem) -> rounded-sm
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				md: 'calc(var(--radius) - 2px)', // Results in 0.25rem (rounded) if --radius is 0.375rem
+				sm: 'calc(var(--radius) - 4px)'  // Results in 0.125rem (rounded-sm) if --radius is 0.375rem
 			},
 			keyframes: {
 				'accordion-down': {
